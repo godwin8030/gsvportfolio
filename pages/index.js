@@ -51,11 +51,11 @@ export default function Home() {
             </ul>
           </nav>
           <div className='text-center px-13 py-10 lg:px-9'>
-            <h2 className='text-4xl font-worksans font-semibold py-2 text-purple-900 md:text-6xl dark:text-purple-500'>Godwin Shibu</h2>
+            <h2 className='text-5xl font-worksans font-semibold py-2 shadow-inner rounded-3xl shadow-gray-300 text-purple-900 md:text-6xl dark:text-purple-400 dark:shadow-black'>Godwin Shibu</h2>
             <h3 className='text-l py-3 font-poppins text-gray-600 md:text-2xl dark:text-white' >Web Developer and 3D Designer.</h3>
             <p className='text-sm py-5 text-justify font-poppins font-medium text-gray-700 md:text-lg max-w-xl mx-auto dark:text-white'>budding web developer. 3D model designer. working with computers since a kid. love the challenge of creating something new. always eager to learn new technologies.
             </p>
-            <div className='text-5xl flex justify-center flex-wrap gap-6 px-5 py-5 text-purple-900 shadow-xl rounded-3xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-300 md:gap-20 hover:shadow-purple-400 dark:text-purple-500 dark:shadow-white hover:dark:shadow-purple-500'>
+            <div className='text-5xl flex justify-center flex-wrap gap-6 px-5 py-5 text-purple-900 shadow-xl rounded-3xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-300 md:gap-20 hover:shadow-purple-400 dark:text-purple-400 dark:shadow-black hover:dark:shadow-purple-500'>
               <a className='hover:text-blue-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200' href="https://www.linkedin.com/in/godwinshibu/"><AiFillLinkedin/></a>
               <a className='hover:text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 dark:hover:text-white' href="https://github.com/godwin8030"><AiFillGithub/></a>
               <a className='hover:text-pink-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200' href="https://www.instagram.com/ig.gsv/"><AiFillInstagram/></a>
@@ -70,7 +70,7 @@ export default function Home() {
         </section>
         <section>
             <h3 className='text-3xl pt-20 pb-6 font-poppins font-bold text-gray-700 text-center dark:text-white'>Skills</h3>
-            <div className='text-6xl flex justify-center flex-wrap gap-10 p-4 shadow-2xl rounded-3xl text-purple-900 hover:shadow-purple-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 dark:text-purple-500 hover:dark:shadow-purple-500'>
+            <div className='text-6xl flex justify-center flex-wrap gap-10 p-4 shadow-2xl rounded-3xl text-purple-900 hover:shadow-purple-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 dark:text-purple-400 dark:shadow-black hover:dark:shadow-purple-500'>
                 <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-yellow-300'><SiJavascript/><span className='text-sm text-center flex justify-center'>Javascript</span></div>
                 <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-orange-500'><FaHtml5/><span className='text-sm text-center flex justify-center'>HTML</span></div>
                 <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-pink-300 dark:hover:text-pink-400'><FaSass/><span className='text-sm text-center flex justify-center'>SaSS</span></div>
