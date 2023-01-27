@@ -71,16 +71,16 @@ export default function Home() {
         <section>
             <h3 className='text-3xl pt-20 pb-6 font-poppins font-bold text-gray-700 text-center dark:text-white'>Skills</h3>
             <div className='text-6xl flex justify-center flex-wrap gap-10 p-4 shadow-2xl rounded-3xl text-purple-900 hover:shadow-purple-400 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 dark:text-purple-400 dark:shadow-black hover:dark:shadow-purple-500'>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-yellow-300'><SiJavascript/><span className='text-sm text-center flex justify-center'>Javascript</span></div>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-orange-500'><FaHtml5/><span className='text-sm text-center flex justify-center'>HTML</span></div>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-pink-300 dark:hover:text-pink-400'><FaSass/><span className='text-sm text-center flex justify-center'>SaSS</span></div>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-blue-300 dark:hover:text-blue-400'><FaReact/><span className='text-sm text-center flex justify-center'>React</span></div>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-red-400 dark:hover:text-red-400'><SiVite/><span className='text-sm text-center flex justify-center'>Vite</span></div>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-green-300'><DiNodejs/><span className='text-sm text-center flex justify-center'>Nodejs</span></div>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-gray-400 dark:hover:text-white'><TbBrandNextjs/><span className='text-sm text-center flex justify-center'>Nextjs</span></div>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-blue-300'><SiTailwindcss/><span className='text-sm text-center flex justify-center'>Tailwind</span></div>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-red-400'><FaJava/><span className='text-sm text-center flex justify-center'>Java</span></div>
-                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 hover:text-yellow-300'><FaAws/><span className='text-sm text-center flex justify-center'>AWS</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-yellow-500'><SiJavascript/><span className='text-sm text-center flex justify-center'>Javascript</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-orange-500'><FaHtml5/><span className='text-sm text-center flex justify-center'>HTML</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-pink-500 dark:text-pink-400'><FaSass/><span className='text-sm text-center flex justify-center'>SaSS</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-blue-500 dark:text-blue-400'><FaReact/><span className='text-sm text-center flex justify-center'>React</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-red-400 dark:text-red-400'><SiVite/><span className='text-sm text-center flex justify-center'>Vite</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-green-500'><DiNodejs/><span className='text-sm text-center flex justify-center'>Nodejs</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-gray-400 dark:hover:text-white'><TbBrandNextjs/><span className='text-sm text-center flex justify-center'>Nextjs</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-blue-500'><SiTailwindcss/><span className='text-sm text-center flex justify-center'>Tailwind</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-red-500'><FaJava/><span className='text-sm text-center flex justify-center'>Java</span></div>
+                <div className='transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200 text-yellow-500'><FaAws/><span className='text-sm text-center flex justify-center'>AWS</span></div>
             </div>
             <section>
               <div className='text-white dark:text-black'>
