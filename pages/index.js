@@ -57,7 +57,7 @@ export default function Home() {
           <div className='text-center px-13 py-10 lg:px-9'>
             <h2 className='text-5xl font-worksans font-semibold py-2 shadow-inner rounded-3xl shadow-gray-300 text-purple-900 md:text-6xl dark:text-purple-400 dark:shadow-black'>Godwin Shibu</h2>
             <h3 className='text-l py-3 font-poppins text-gray-600 md:text-2xl dark:text-white' >analyst & web dev</h3>
-            <p className='text-sm py-5 text-justify font-poppins font-medium text-gray-700 md:text-lg max-w-xl mx-auto dark:text-white'>web dev. analyst. working with computers since a kid. love the challenge of creating new stuff. always eager to learn new tech.
+            <p className='text-sm py-5 text-justify font-poppins font-medium text-gray-700 md:text-lg max-w-xl mx-auto dark:text-white'>web dev. analyst. working with computers since a kid. love the challenge of creating new stuff. always eager to learn new tech. you can reach out to me on my socials below. cheers!
             </p>
             <div className='text-5xl flex justify-center flex-wrap gap-6 px-5 py-5 text-purple-900 shadow-xl rounded-3xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-300 md:gap-20 hover:shadow-purple-400 dark:text-purple-400 dark:shadow-black hover:dark:shadow-purple-500'>
               <a className='hover:text-blue-700 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover: duration-200' href="https://www.linkedin.com/in/godwinshibu/"><AiFillLinkedin/></a>
