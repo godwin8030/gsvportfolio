@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   AiFillGithub,
   AiFillInstagram,
@@ -8,45 +8,60 @@ import {
   AiFillTwitterCircle
 } from 'react-icons/ai'
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs'
-import { FaAws, FaJava, FaPython, FaReact } from 'react-icons/fa'
-import { DiNodejs } from 'react-icons/di'
-import { SiDjango, SiFlask, SiJavascript, SiPostgresql, SiTailwindcss, SiVite } from 'react-icons/si'
-import { TbBrandNextjs } from 'react-icons/tb'
 import profile from '../assets/profile.png'
 import avatar from '../assets/profile.svg'
 
-const skills = [
-  { name: 'JavaScript', icon: SiJavascript, color: 'text-yellow-500' },
-  { name: 'React', icon: FaReact, color: 'text-sky-500' },
-  { name: 'Next.js', icon: TbBrandNextjs, color: 'text-slate-900 dark:text-white' },
-  { name: 'Node.js', icon: DiNodejs, color: 'text-green-500' },
-  { name: 'Python', icon: FaPython, color: 'text-blue-500' },
-  { name: 'Django', icon: SiDjango, color: 'text-emerald-600' },
-  { name: 'Flask', icon: SiFlask, color: 'text-slate-600 dark:text-slate-300' },
-  { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-pink-500' },
-  { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-cyan-500' },
-  { name: 'AWS', icon: FaAws, color: 'text-orange-500' },
-  { name: 'Java', icon: FaJava, color: 'text-red-500' },
-  { name: 'Vite', icon: SiVite, color: 'text-purple-500' }
+const strengths = [
+  {
+    name: 'Business Analysis',
+    blurb: 'Translating business needs into clear requirements, workflows, and practical action plans.'
+  },
+  {
+    name: 'Project Management',
+    blurb: 'Coordinating delivery with structure, stakeholder alignment, and steady execution.'
+  },
+  {
+    name: 'AI Chatbot Enablement',
+    blurb: 'Supporting chatbot setup, content flow, QA, and optimisation across digital channels.'
+  },
+  {
+    name: 'Channel Operations',
+    blurb: 'Helping teams improve customer experience on Meta, WhatsApp, Instagram, and similar platforms.'
+  }
 ]
 
-const projects = [
+const focusAreas = [
   {
-    title: 'Productive dashboards',
-    blurb: 'Built modern analytics experiences with React and data visualisation patterns for faster decision-making.'
+    title: 'Business process support',
+    blurb: 'Improving operations through clearer workflows, documentation, and better coordination between teams.'
   },
   {
-    title: 'Web applications',
-    blurb: 'Delivered polished frontends and scalable APIs for business tools, portfolio products, and automation workflows.'
+    title: 'AI and automation projects',
+    blurb: 'Working on chatbot and digital engagement initiatives that make customer interaction more efficient and scalable.'
   },
   {
-    title: 'Data-driven solutions',
-    blurb: 'Worked with Python, Django, and database systems to turn raw information into reliable applications.'
+    title: 'Cross-channel delivery',
+    blurb: 'Bridging business goals and delivery across messaging platforms, customer journeys, and stakeholder needs.'
   }
 ]
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false)
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem('theme')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setDarkMode(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode)
+    document.documentElement.style.colorScheme = darkMode ? 'dark' : 'light'
+    window.localStorage.setItem('theme', darkMode ? 'dark' : 'light')
+  }, [darkMode])
 
   function toggleDarkMode() {
     setDarkMode(!darkMode)
@@ -55,8 +70,8 @@ export default function Home() {
   return (
     <div className={darkMode ? 'dark' : ''}>
       <Head>
-        <title>Godwin Shibu | Software Developer & Analyst</title>
-        <meta name="description" content="Godwin Shibu is a software developer and analyst focused on building practical web products and data-driven experiences." />
+        <title>Godwin Shibu | Business Analyst & Project Manager</title>
+        <meta name="description" content="Godwin Shibu is a business analyst and project manager focused on AI chatbot enablement and digital channel operations." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -91,7 +106,7 @@ export default function Home() {
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="space-y-6">
               <span className="inline-flex rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-sm font-medium text-violet-700 dark:border-violet-900 dark:bg-violet-950/60 dark:text-violet-300">
-                Available for freelance and full-time opportunities
+                Business Analyst • Project Manager • AI Chatbot Operations
               </span>
 
               <div className="space-y-4">
@@ -99,10 +114,10 @@ export default function Home() {
                   Hi, I’m <span className="text-violet-600 dark:text-violet-400">Godwin Shibu</span>.
                 </h1>
                 <h2 className="text-xl font-medium text-slate-600 dark:text-slate-300 sm:text-2xl">
-                  Software developer and analyst focused on creating practical web apps, thoughtful interfaces, and dependable digital experiences.
+                  I help teams turn business needs into clear delivery plans, better customer experiences, and practical AI-powered solutions.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
-                  I’m a developer who enjoys turning ideas into clean products with a strong mix of frontend craft, backend logic, and analytical thinking. Whether I’m building a web app, dashboard, or workflow tool, I care about usability, performance, and clarity.
+                  I work primarily in business analysis, project coordination, and AI chatbot enablement across digital channels such as Meta, WhatsApp, and Instagram. My focus is on bringing structure to complex work, improving workflows, and supporting customer-facing operations with clarity and consistency.
                 </p>
               </div>
 
@@ -135,9 +150,9 @@ export default function Home() {
           <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
             <div className="rounded-[2rem] border border-slate-200 bg-white/80 p-8 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/70">
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-600 dark:text-violet-400">About</p>
-              <h3 className="mt-3 text-2xl font-semibold">Focused on building useful products with a calm, modern approach.</h3>
+              <h3 className="mt-3 text-2xl font-semibold">Focused on bringing clarity, structure, and measurable progress to complex work.</h3>
               <p className="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
-                My background blends development, analysis, and product-minded problem solving. I enjoy creating experiences that are intuitive, responsive, and practical, while continuously learning new tools and improving how software serves people.
+                My background blends business analysis, project coordination, and hands-on work with AI-powered customer engagement solutions. I enjoy connecting business goals with execution, improving communication across teams, and helping digital channels run more effectively.
               </p>
             </div>
 
@@ -159,17 +174,17 @@ export default function Home() {
         <section id="skills" className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 lg:px-10">
           <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-600 dark:text-violet-400">Skills</p>
-              <h3 className="text-2xl font-semibold">Core tools I use to build.</h3>
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-600 dark:text-violet-400">Core strengths</p>
+              <h3 className="text-2xl font-semibold">The kinds of work I bring structure and momentum to.</h3>
             </div>
-            <p className="text-sm text-slate-600 dark:text-slate-300">Frontend, backend, databases, and product thinking.</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {skills.map(({ name, icon: Icon, color }) => (
+            {strengths.map(({ name, blurb }) => (
               <div key={name} className="rounded-[1.5rem] border border-slate-200 bg-white/80 p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/70">
-                <Icon className={`text-3xl ${color}`} />
-                <p className="mt-3 font-semibold">{name}</p>
+                <div className="mb-4 h-10 w-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500" />
+                <p className="font-semibold">{name}</p>
+                <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">{blurb}</p>
               </div>
             ))}
           </div>
@@ -178,13 +193,13 @@ export default function Home() {
         <section id="projects" className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 lg:px-10">
           <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-600 dark:text-violet-400">Selected work</p>
-              <h3 className="text-2xl font-semibold">Recent project themes I enjoy building.</h3>
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-600 dark:text-violet-400">Focus areas</p>
+              <h3 className="text-2xl font-semibold">Some of the work I enjoy supporting most.</h3>
             </div>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            {projects.map((project) => (
+            {focusAreas.map((project) => (
               <div key={project.title} className="rounded-[1.75rem] border border-slate-200 bg-white/80 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900/70">
                 <div className="mb-4 h-10 w-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500" />
                 <h4 className="text-xl font-semibold">{project.title}</h4>
@@ -199,7 +214,7 @@ export default function Home() {
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-100">Contact</p>
             <h3 className="mt-3 text-2xl font-semibold sm:text-3xl">Let’s build something meaningful together.</h3>
             <p className="mt-4 max-w-2xl text-base leading-8 text-violet-50">
-              I’m open to collaborations, freelance opportunities, and full-time roles where I can contribute with clean code, thoughtful design, and analytical problem-solving.
+              I’m open to project, operations, and AI enablement opportunities where I can contribute with business insight, strong coordination, and thoughtful delivery across customer-facing channels.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="mailto:godwinshibum@gmail.com" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-violet-700 transition hover:-translate-y-0.5">
