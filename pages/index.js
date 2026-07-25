@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import {
   AiFillGithub,
   AiFillInstagram,
@@ -11,39 +11,179 @@ import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs'
 import profile from '../assets/profile.png'
 import avatar from '../assets/profile.svg'
 
-const strengths = [
-  {
-    name: 'Business Analysis',
-    blurb: 'Translating business needs into clear requirements, workflows, and practical action plans.'
-  },
-  {
-    name: 'Project Management',
-    blurb: 'Coordinating delivery with structure, stakeholder alignment, and steady execution.'
-  },
-  {
-    name: 'AI Chatbot Enablement',
-    blurb: 'Supporting chatbot setup, content flow, QA, and optimisation across digital channels.'
-  },
-  {
-    name: 'Channel Operations',
-    blurb: 'Helping teams improve customer experience on Meta, WhatsApp, Instagram, and similar platforms.'
-  }
+/* ---------------------------------------------------------------- */
+/* Content                                                            */
+/* ---------------------------------------------------------------- */
+
+const METRICS = [
+  { value: '40+', label: 'enterprise & govt clients served' },
+  { value: '500,000+', label: 'chatbot interactions in 6 months' },
+  { value: '40%', label: 'increase in customer engagement' },
+  { value: '−30%', label: 'average chatbot response time' },
+  { value: '+25%', label: 'user satisfaction lift' },
+  { value: '$1M', label: 'revenue opportunity identified' },
+  { value: '15+', label: 'chatbots shipped in one year' },
+  { value: '+50%', label: 'delivery efficiency' },
+  { value: '55%', label: 'more efficient than traditional chatbots' },
+  { value: '+40%', label: 'citizen engagement across use cases' },
 ]
 
-const focusAreas = [
+const ROLES = [
   {
-    title: 'Business process support',
-    blurb: 'Improving operations through clearer workflows, documentation, and better coordination between teams.'
+    when: 'Sep 2025 — Present',
+    place: 'Noida, India',
+    title: 'Business Analyst',
+    company: 'zeapl.ai',
+    bullets: [
+      'Driving solutions & delivery for CX and CPaaS engagements, translating client requirements into shippable product plans.',
+    ],
   },
   {
-    title: 'AI and automation projects',
-    blurb: 'Working on chatbot and digital engagement initiatives that make customer interaction more efficient and scalable.'
+    when: 'Jun 2024 — Sep 2025',
+    place: 'Hybrid — Chennai / Chandigarh, India',
+    title: 'Senior Business Analyst',
+    company: 'Gupshup',
+    bullets: [
+      'Spearheaded AI chatbot development for **40+ enterprise and government clients**, lifting customer engagement by **40%** and driving **500,000+ interactions** within the first six months of deployment.',
+      'Orchestrated cross-functional delivery across developers, data scientists, and stakeholders on flagship projects including the **National Consumer Helpline** and **Ayushman Bharat**, cutting average response times by **30%**.',
+      'Analyzed user feedback from deployments on **NHAI** and **TATA Power**, feeding iterative improvements that raised satisfaction scores by **25%**.',
+      'Built custom performance dashboards that improved account decision-making by **30%** and surfaced **$1M** in potential revenue opportunities.',
+    ],
   },
   {
-    title: 'Cross-channel delivery',
-    blurb: 'Bridging business goals and delivery across messaging platforms, customer journeys, and stakeholder needs.'
-  }
+    when: 'Jul 2023 — Jun 2024',
+    place: 'Chennai, India',
+    title: 'Business Analyst',
+    company: 'Gupshup',
+    bullets: [
+      'Built a delivery plan spanning **15+ chatbots** across **30 state and central government departments** in a single year, lifting delivery efficiency by **50%** and holding every deadline.',
+      'Introduced a data-driven approach to engagement tracking, raising overall user satisfaction ratings by **25%**.',
+      'Partnered with cross-functional teams to surface each department\u2019s pain points, resulting in tailored chatbot deployments across the board.',
+    ],
+  },
 ]
+
+const PROJECTS = [
+  {
+    org: 'Tamil Nadu e-Governance Agency',
+    client: 'Gupshup',
+    summary:
+      'Designed and shipped AI chatbot projects that outperformed traditional chatbots by **55%** in efficiency, lifting citizen satisfaction ratings by **30%** and cutting response time by **20%**.',
+    stats: ['55% more efficient', '+30% citizen satisfaction', '−20% response time'],
+  },
+  {
+    org: 'National Consumer Helpline · NHAI · CRIS · TATA',
+    client: 'Gupshup',
+    summary:
+      'Led design and deployment of **15+ chatbots** with advanced AI capabilities for government agencies — cutting response times by **50%** and lifting citizen satisfaction by **35%**. Pinpointed process pain points and tailored solutions, cutting complaints by **20%** and lifting efficiency by **30%**. Shipped use cases for utility payments, grievances, and job portals, driving a **40%** increase in citizen engagement.',
+    stats: ['15+ chatbots deployed', '−50% response time', '+35% citizen satisfaction', '+40% citizen engagement'],
+  },
+]
+
+const LEGEND = [
+  {
+    tag: 'Core discipline',
+    items: [
+      { label: 'IT Business Analysis', filled: true },
+      { label: 'Data Science', filled: true },
+      { label: 'Business Intelligence' },
+      { label: 'Delivery Management' },
+    ],
+  },
+  {
+    tag: 'Data & analytics',
+    items: [
+      { label: 'Power BI' }, { label: 'Python' }, { label: 'SQL (Postgres)' },
+      { label: 'Pandas' }, { label: 'NumPy' }, { label: 'Excel' },
+    ],
+  },
+  {
+    tag: 'Engineering',
+    items: [
+      { label: 'JavaScript' }, { label: 'React' }, { label: 'Next.js' },
+      { label: 'Node.js' }, { label: 'HTML / CSS' }, { label: 'Bash' },
+      { label: 'Java' }, { label: 'AWS' }, { label: 'Solidity' },
+    ],
+  },
+  {
+    tag: 'Domain',
+    items: [{ label: 'CPaaS' }, { label: 'Conversational AI' }, { label: 'CX Systems' }],
+  },
+  {
+    tag: 'Working style',
+    items: [
+      { label: 'Team Coordination' }, { label: 'Task Management' },
+      { label: 'Critical Thinking' }, { label: 'Problem Solving' },
+    ],
+  },
+  {
+    tag: 'Certifications',
+    items: [
+      { label: 'Fundamentals of Deep Learning' },
+      { label: 'Blockchain & Ethereum Dev' },
+      { label: 'React Framework' },
+    ],
+  },
+  {
+    tag: 'Languages',
+    items: [{ label: 'English — Professional' }, { label: 'German — Elementary' }],
+  },
+]
+
+const EDUCATION = [
+  {
+    when: 'Aug 2019 — Jul 2023',
+    title: 'B.Tech, Computer Science & Engineering',
+    place: 'Saintgits College of Engineering — APJ Abdul Kalam Technological University, Kottayam',
+  },
+  { when: '— May 2019', title: '12th Senior Secondary', place: 'Government Model Senior Secondary School 37B, Chandigarh' },
+]
+
+/* ---------------------------------------------------------------- */
+/* Small helpers                                                      */
+/* ---------------------------------------------------------------- */
+
+function Bold({ text }) {
+  const parts = text.split(/\*\*(.*?)\*\*/g)
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <b key={i} className="font-semibold text-ink dark:text-paper">{part}</b>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  )
+}
+
+function Reveal({ children, className = '' }) {
+  const ref = useRef(null)
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('in')),
+      { threshold: 0.12 }
+    )
+    io.observe(node)
+    return () => io.disconnect()
+  }, [])
+  return <div ref={ref} className={`reveal ${className}`}>{children}</div>
+}
+
+function Tag({ children }) {
+  return (
+    <div className="mb-2.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft before:mr-1 before:text-amber before:content-['//']">
+      {children}
+    </div>
+  )
+}
+
+/* ---------------------------------------------------------------- */
+/* Page                                                                */
+/* ---------------------------------------------------------------- */
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false)
@@ -51,10 +191,7 @@ export default function Home() {
   useEffect(() => {
     const savedTheme = window.localStorage.getItem('theme')
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setDarkMode(true)
-    }
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) setDarkMode(true)
   }, [])
 
   useEffect(() => {
@@ -63,169 +200,316 @@ export default function Home() {
     window.localStorage.setItem('theme', darkMode ? 'dark' : 'light')
   }, [darkMode])
 
-  function toggleDarkMode() {
-    setDarkMode(!darkMode)
-  }
-
   return (
     <div className={darkMode ? 'dark' : ''}>
       <Head>
-        <title>Godwin Shibu | Business Analyst & Project Manager</title>
-        <meta name="description" content="Godwin Shibu is a business analyst and project manager focused on AI chatbot enablement and digital channel operations." />
+        <title>Godwin Shibu Varghese — Business Analyst, Conversational AI &amp; CX Systems</title>
+        <meta name="description" content="Business Analyst specializing in conversational AI, CX, and CPaaS delivery for enterprise and government clients." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(167,139,250,0.16),_transparent_35%),linear-gradient(135deg,_#f8f7ff_0%,_#f8fafc_45%,_#eef2ff_100%)] text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
-        <section id="home" className="mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6 sm:px-8 lg:px-10">
-          <nav className="mb-12 flex items-center justify-between">
-            <a href="#home" className="flex items-center gap-3 rounded-full border border-slate-200 bg-white/70 px-3 py-2 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/70">
-              <Image src={avatar} alt="Godwin avatar" width={48} height={48} className="rounded-full" />
-              <span className="text-sm font-semibold tracking-[0.2em] text-slate-700 uppercase dark:text-slate-200">Godwin</span>
+      <main className="bp-grid min-h-screen bg-paper text-ink transition-colors duration-300 selection:bg-amber selection:text-paperwhite dark:bg-darkbg dark:text-paper">
+
+        {/* Header */}
+        <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-sm dark:border-white/10 dark:bg-darkbg/90">
+          <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8 lg:px-10">
+            <a href="#home" className="flex items-center gap-2.5 font-mono text-sm font-semibold">
+              <Image src={avatar} alt="Godwin avatar" width={28} height={28} className="rounded-full" />
+              GSV / PORTFOLIO
             </a>
+
+            <div className="hidden gap-7 sm:flex">
+              {['Experience', 'Projects', 'Skills', 'Education', 'Contact'].map((label) => (
+                <a
+                  key={label}
+                  href={`#${label === 'Experience' ? 'work' : label.toLowerCase()}`}
+                  className="border-b border-transparent pb-0.5 font-mono text-xs text-ink-soft transition-colors hover:border-amber hover:text-ink dark:text-line dark:hover:text-paper"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
 
             <div className="flex items-center gap-3">
               <button
-                onClick={toggleDarkMode}
-                className="rounded-full border border-slate-200 bg-white/70 p-3 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700 dark:bg-slate-900/70"
+                onClick={() => setDarkMode(!darkMode)}
+                className="rounded-full border border-line p-2.5 transition hover:-translate-y-0.5 hover:border-amber dark:border-white/20"
                 aria-label="Toggle dark mode"
               >
-                {darkMode ? <BsFillSunFill className="text-yellow-400" /> : <BsFillMoonStarsFill className="text-slate-700" />}
+                {darkMode ? <BsFillSunFill className="text-amber" /> : <BsFillMoonStarsFill className="text-ink-soft" />}
               </button>
               <a
                 href="https://drive.google.com/file/d/1mxqlTUlFFb98n54UmSZfzw2-XdpDFoxv/view?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-violet-200 transition hover:-translate-y-0.5 hover:shadow-violet-300 dark:shadow-violet-950"
+                className="font-mono text-[13px] tracking-wide border border-ink bg-ink px-4 py-2.5 text-paper transition-colors hover:bg-amber hover:border-amber dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber"
               >
                 Resume
               </a>
             </div>
           </nav>
+        </header>
 
-          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="space-y-6">
-              <span className="inline-flex rounded-full border border-violet-200 bg-violet-50 px-3 py-1 text-sm font-medium text-violet-700 dark:border-violet-900 dark:bg-violet-950/60 dark:text-violet-300">
-                Business Analyst • Project Manager • AI Chatbot Operations
-              </span>
-
-              <div className="space-y-4">
-                <h1 className="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-                  Hi, I’m <span className="text-violet-600 dark:text-violet-400">Godwin Shibu</span>.
-                </h1>
-                <h2 className="text-xl font-medium text-slate-600 dark:text-slate-300 sm:text-2xl">
-                  I help teams turn business needs into clear delivery plans, better customer experiences, and practical AI-powered solutions.
-                </h2>
-                <p className="max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 sm:text-lg">
-                  I work primarily in business analysis, project coordination, and AI chatbot enablement across digital channels such as Meta, WhatsApp, and Instagram. My focus is on bringing structure to complex work, improving workflows, and supporting customer-facing operations with clarity and consistency.
-                </p>
+        {/* Hero */}
+        <section id="home" className="mx-auto max-w-6xl px-6 pt-20 sm:px-8 lg:px-10">
+          <div className="grid items-start gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              <div className="mb-5 flex items-center gap-2.5">
+                <span className="inline-block h-px w-10 bg-amber" />
+                <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft dark:text-line">
+                  Noida, Uttar Pradesh, India
+                </span>
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                <a href="#projects" className="rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-700 dark:bg-violet-600 dark:hover:bg-violet-500">
-                  See my work
+              <h1 className="max-w-2xl font-serif text-[clamp(34px,5.4vw,56px)] font-bold leading-[1.08] tracking-tight">
+                I map how enterprises talk to <em className="italic text-teal">millions</em> of customers, one conversation at a time.
+              </h1>
+
+              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-sm text-ink-soft dark:text-line">
+                <b className="font-semibold text-ink dark:text-paper">Godwin Shibu Varghese</b>
+                <span className="text-line">/</span>
+                <span>Business Analyst @ zeapl.ai</span>
+                <span className="text-line">/</span>
+                <span>Solutions &amp; Delivery, CX, CPaaS</span>
+              </div>
+
+              <p className="mt-6 max-w-xl text-[16px] leading-7 text-ink-soft dark:text-line">
+                I sit between engineering, data, and government-scale clients to turn conversational-AI chaos into
+                measurable outcomes — chatbots that respond faster, dashboards that surface the right number, and
+                delivery plans that ship on time.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#work" className="font-mono text-[13px] tracking-wide border border-ink bg-ink px-5 py-3 text-paper transition-colors hover:bg-amber hover:border-amber dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber">
+                  View experience ↓
                 </a>
-                <a href="#contact" className="rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-violet-400 hover:text-violet-600 dark:border-slate-700 dark:text-slate-200">
-                  Let’s talk
+                <a href="mailto:godwinshibu01@gmail.com" className="font-mono text-[13px] tracking-wide border border-ink px-5 py-3 transition-colors hover:bg-ink hover:text-paper dark:border-paper dark:hover:bg-paper dark:hover:text-ink">
+                  Email me →
                 </a>
               </div>
 
-              <div className="flex flex-wrap gap-4 text-3xl text-slate-700 dark:text-slate-200">
-                <a className="transition hover:-translate-y-0.5 hover:text-blue-600" href="https://www.linkedin.com/in/godwinshibu/" target="_blank" rel="noreferrer"><AiFillLinkedin /></a>
-                <a className="transition hover:-translate-y-0.5 hover:text-slate-900 dark:hover:text-white" href="https://github.com/godwin8030" target="_blank" rel="noreferrer"><AiFillGithub /></a>
-                <a className="transition hover:-translate-y-0.5 hover:text-pink-500" href="https://www.instagram.com/ig.gsv/" target="_blank" rel="noreferrer"><AiFillInstagram /></a>
-                <a className="transition hover:-translate-y-0.5 hover:text-sky-500" href="https://twitter.com/godwin_shibu" target="_blank" rel="noreferrer"><AiFillTwitterCircle /></a>
+              <div className="mt-8 flex flex-wrap gap-4 text-2xl text-ink-soft dark:text-line">
+                <a className="transition hover:-translate-y-0.5 hover:text-amber" href="https://www.linkedin.com/in/godwinshibu/" target="_blank" rel="noreferrer"><AiFillLinkedin /></a>
+                <a className="transition hover:-translate-y-0.5 hover:text-amber" href="https://github.com/godwin8030" target="_blank" rel="noreferrer"><AiFillGithub /></a>
+                <a className="transition hover:-translate-y-0.5 hover:text-amber" href="https://www.instagram.com/ig.gsv/" target="_blank" rel="noreferrer"><AiFillInstagram /></a>
+                <a className="transition hover:-translate-y-0.5 hover:text-amber" href="https://twitter.com/godwin_shibu" target="_blank" rel="noreferrer"><AiFillTwitterCircle /></a>
               </div>
             </div>
 
-            <div className="mx-auto w-full max-w-md">
-              <div className="rounded-[2rem] border border-white/70 bg-white/70 p-3 shadow-2xl shadow-violet-200 backdrop-blur dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-black/30">
-                <Image src={profile} alt="Godwin Shibu portrait" className="rounded-[1.5rem] object-cover" priority />
+            <div className="mx-auto w-full max-w-sm">
+              <div className="border border-ink bg-paperwhite p-2 dark:border-white/15 dark:bg-darkbg-2">
+                <Image src={profile} alt="Godwin Shibu portrait" className="w-full object-cover" priority />
               </div>
             </div>
           </div>
+
+          {/* Schematic diagram */}
+          <Reveal>
+            <div className="relative mt-16 overflow-x-auto border border-ink bg-paperwhite px-5 pb-5 pt-7 dark:border-white/15 dark:bg-darkbg-2">
+              <span className="absolute -top-[11px] left-5 bg-paperwhite px-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft before:mr-1 before:text-amber before:content-['//'] dark:bg-darkbg-2">
+                Fig. 01 — Typical chatbot delivery flow I own
+              </span>
+              <svg viewBox="0 0 920 190" className="block h-auto min-w-[640px] w-full">
+                <defs>
+                  <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6 Z" className="fill-ink dark:fill-paper" />
+                  </marker>
+                </defs>
+                <g fontFamily="IBM Plex Mono" fontSize="11" className="fill-ink dark:fill-paper">
+                  <rect x="10" y="70" width="130" height="50" fill="none" className="stroke-ink dark:stroke-paper" />
+                  <text x="75" y="90" textAnchor="middle">END USER</text>
+                  <text x="75" y="106" textAnchor="middle" className="fill-ink-soft dark:fill-line">govt / enterprise</text>
+
+                  <rect x="200" y="70" width="150" height="50" fill="none" stroke="#D98A2B" strokeWidth="1.5" />
+                  <text x="275" y="90" textAnchor="middle">CHATBOT / CPaaS</text>
+                  <text x="275" y="106" textAnchor="middle" className="fill-ink-soft dark:fill-line">Gupshup platform</text>
+
+                  <rect x="410" y="10" width="150" height="50" fill="none" className="stroke-ink dark:stroke-paper" />
+                  <text x="485" y="30" textAnchor="middle">STAKEHOLDERS</text>
+                  <text x="485" y="46" textAnchor="middle" className="fill-ink-soft dark:fill-line">dev · data · client</text>
+
+                  <rect x="410" y="130" width="150" height="50" fill="none" className="stroke-ink dark:stroke-paper" />
+                  <text x="485" y="150" textAnchor="middle">FEEDBACK LOOP</text>
+                  <text x="485" y="166" textAnchor="middle" className="fill-ink-soft dark:fill-line">user satisfaction</text>
+
+                  <rect x="620" y="70" width="150" height="50" fill="none" stroke="#3E7C6B" strokeWidth="1.5" />
+                  <text x="695" y="90" textAnchor="middle">DASHBOARD</text>
+                  <text x="695" y="106" textAnchor="middle" className="fill-ink-soft dark:fill-line">my analysis layer</text>
+
+                  <rect x="800" y="70" width="110" height="50" fill="none" className="stroke-ink dark:stroke-paper" />
+                  <text x="855" y="90" textAnchor="middle">DECISION</text>
+                  <text x="855" y="106" textAnchor="middle" className="fill-ink-soft dark:fill-line">+$1M ID&apos;d</text>
+                </g>
+                <g strokeWidth="1" markerEnd="url(#arrow)" className="stroke-ink dark:stroke-paper">
+                  <line x1="140" y1="95" x2="198" y2="95" />
+                  <line x1="350" y1="85" x2="408" y2="50" />
+                  <line x1="350" y1="105" x2="408" y2="140" />
+                  <line x1="560" y1="95" x2="618" y2="95" />
+                  <line x1="770" y1="95" x2="798" y2="95" />
+                </g>
+              </svg>
+            </div>
+          </Reveal>
         </section>
 
-        <section id="about" className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 lg:px-10">
-          <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="rounded-[2rem] border border-slate-200 bg-white/80 p-8 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/70">
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-600 dark:text-violet-400">About</p>
-              <h3 className="mt-3 text-2xl font-semibold">Focused on bringing clarity, structure, and measurable progress to complex work.</h3>
-              <p className="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
-                My background blends business analysis, project coordination, and hands-on work with AI-powered customer engagement solutions. I enjoy connecting business goals with execution, improving communication across teams, and helping digital channels run more effectively.
-              </p>
-            </div>
+        {/* Metrics tape */}
+        <div className="mt-20 overflow-hidden whitespace-nowrap border-y border-ink bg-ink py-3.5 dark:border-white/15 dark:bg-black/40">
+          <div className="animate-tape inline-flex">
+            {[...METRICS, ...METRICS].map((m, i) => (
+              <span key={i} className="inline-flex items-center gap-2.5 px-7 font-mono text-[13px] text-paper after:ml-7 after:text-[9px] after:text-teal after:content-['◆']">
+                <b className="font-semibold text-amber">{m.value}</b> {m.label}
+              </span>
+            ))}
+          </div>
+        </div>
 
-            <div className="grid gap-4 sm:grid-cols-3">
-              {[
-                ['5+', 'years learning and building'],
-                ['20+', 'projects shaped by curiosity'],
-                ['100%', 'attention to detail']
-              ].map(([value, label]) => (
-                <div key={label} className="rounded-[1.5rem] border border-slate-200 bg-white/80 p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
-                  <p className="text-3xl font-semibold text-violet-600 dark:text-violet-400">{value}</p>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{label}</p>
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10">
+
+          {/* Experience */}
+          <section id="work" className="py-20">
+            <div className="mb-11 flex items-baseline gap-4 border-b border-ink pb-4 dark:border-white/15">
+              <span className="font-mono text-[13px] text-amber">01</span>
+              <h2 className="font-serif text-[clamp(24px,3.2vw,32px)] font-bold">Experience</h2>
+            </div>
+            {ROLES.map((role, i) => (
+              <Reveal key={i}>
+                <div className="grid grid-cols-[140px_1px_1fr] gap-x-6 sm:grid-cols-[160px_1px_1fr] sm:gap-x-7">
+                  <div className="pt-1 font-mono text-[12px] text-ink-soft dark:text-line sm:text-[12.5px]">
+                    {role.when}<br />{role.place}
+                  </div>
+                  <div className="relative bg-line dark:bg-white/15">
+                    <div className="absolute -left-[3.5px] top-1.5 h-2 w-2 rounded-full border-2 border-amber bg-paper dark:bg-darkbg" />
+                  </div>
+                  <div className="pb-12">
+                    <h3 className="text-[18px] font-semibold sm:text-[19px]">{role.title}</h3>
+                    <span className="mt-0.5 block font-mono text-[12.5px] text-teal">{role.company}</span>
+                    <ul className="mt-3.5 space-y-2.5">
+                      {role.bullets.map((b, j) => (
+                        <li key={j} className="relative pl-5 text-[14px] text-ink-soft before:absolute before:left-0 before:text-amber before:content-['—'] dark:text-line sm:text-[14.5px]">
+                          <Bold text={b} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
+              </Reveal>
+            ))}
+          </section>
+
+          {/* Projects */}
+          <section id="projects" className="py-20">
+            <div className="mb-11 flex items-baseline gap-4 border-b border-ink pb-4 dark:border-white/15">
+              <span className="font-mono text-[13px] text-amber">02</span>
+              <h2 className="font-serif text-[clamp(24px,3.2vw,32px)] font-bold">Selected projects</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {PROJECTS.map((p, i) => (
+                <Reveal key={i}>
+                  <div className="flex h-full flex-col border border-ink bg-paperwhite p-6 dark:border-white/15 dark:bg-darkbg-2">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-teal">{p.client}</span>
+                    <h3 className="mt-2 text-[18px] font-semibold leading-snug">{p.org}</h3>
+                    <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft dark:text-line">
+                      <Bold text={p.summary} />
+                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2 border-t border-line-soft pt-4 dark:border-white/10">
+                      {p.stats.map((s, j) => (
+                        <span key={j} className="border border-ink-soft px-2.5 py-1.5 font-mono text-[11px] dark:border-line">{s}</span>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="skills" className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 lg:px-10">
-          <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-600 dark:text-violet-400">Core strengths</p>
-              <h3 className="text-2xl font-semibold">The kinds of work I bring structure and momentum to.</h3>
+          {/* Skills */}
+          <section id="skills" className="py-20">
+            <div className="mb-11 flex items-baseline gap-4 border-b border-ink pb-4 dark:border-white/15">
+              <span className="font-mono text-[13px] text-amber">03</span>
+              <h2 className="font-serif text-[clamp(24px,3.2vw,32px)] font-bold">Skills &amp; toolkit</h2>
             </div>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {strengths.map(({ name, blurb }) => (
-              <div key={name} className="rounded-[1.5rem] border border-slate-200 bg-white/80 p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/70">
-                <div className="mb-4 h-10 w-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500" />
-                <p className="font-semibold">{name}</p>
-                <p className="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">{blurb}</p>
+            <Reveal>
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-px border border-ink bg-ink dark:border-white/15">
+                {LEGEND.map((cell, i) => (
+                  <div key={i} className="bg-paper p-5 dark:bg-darkbg">
+                    <Tag>{cell.tag}</Tag>
+                    <div className="flex flex-wrap gap-2">
+                      {cell.items.map((item, j) => (
+                        <span
+                          key={j}
+                          className={`border px-2.5 py-1.5 font-mono text-xs ${
+                            item.filled
+                              ? 'border-ink bg-ink text-paper dark:border-paper dark:bg-paper dark:text-ink'
+                              : 'border-ink-soft text-ink dark:border-line dark:text-paper'
+                          }`}
+                        >
+                          {item.label}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
+            </Reveal>
+          </section>
 
-        <section id="projects" className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 lg:px-10">
-          <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-600 dark:text-violet-400">Focus areas</p>
-              <h3 className="text-2xl font-semibold">Some of the work I enjoy supporting most.</h3>
+          {/* Education */}
+          <section id="education" className="py-20">
+            <div className="mb-11 flex items-baseline gap-4 border-b border-ink pb-4 dark:border-white/15">
+              <span className="font-mono text-[13px] text-amber">04</span>
+              <h2 className="font-serif text-[clamp(24px,3.2vw,32px)] font-bold">Education</h2>
             </div>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-3">
-            {focusAreas.map((project) => (
-              <div key={project.title} className="rounded-[1.75rem] border border-slate-200 bg-white/80 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900/70">
-                <div className="mb-4 h-10 w-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500" />
-                <h4 className="text-xl font-semibold">{project.title}</h4>
-                <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">{project.blurb}</p>
+            <Reveal>
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-6">
+                {EDUCATION.map((edu, i) => (
+                  <div key={i} className="border border-ink bg-paperwhite p-5 dark:border-white/15 dark:bg-darkbg-2">
+                    <div className="font-mono text-xs text-teal">{edu.when}</div>
+                    <h4 className="mt-2 text-base font-semibold">{edu.title}</h4>
+                    <p className="mt-1 text-[13.5px] text-ink-soft dark:text-line">{edu.place}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
+            </Reveal>
+          </section>
+        </div>
 
-        <section id="contact" className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 lg:px-10">
-          <div className="rounded-[2rem] border border-violet-200 bg-gradient-to-r from-violet-600 to-fuchsia-600 p-8 text-white shadow-xl shadow-violet-200 dark:border-violet-900 dark:shadow-violet-950">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-violet-100">Contact</p>
-            <h3 className="mt-3 text-2xl font-semibold sm:text-3xl">Let’s build something meaningful together.</h3>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-violet-50">
-              I’m open to project, operations, and AI enablement opportunities where I can contribute with business insight, strong coordination, and thoughtful delivery across customer-facing channels.
+        {/* Contact / footer */}
+        <footer id="contact" className="border-t border-ink pb-10 pt-14 dark:border-white/15">
+          <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10">
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft before:mr-1 before:text-amber before:content-['//'] dark:text-line">
+              Get in touch
+            </span>
+            <h2 className="mt-3.5 font-serif text-[clamp(24px,3.2vw,32px)] font-bold">
+              Let&apos;s talk about your next chatbot, dashboard, or delivery plan.
+            </h2>
+            <p className="mb-7 mt-4 max-w-lg text-[15px] leading-7 text-ink-soft dark:text-line">
+              Based in Noida, working with teams across CX, CPaaS, and enterprise data — open to
+              Business Analyst and Solutions &amp; Delivery conversations.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href="mailto:godwinshibum@gmail.com" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-violet-700 transition hover:-translate-y-0.5">
-                Email me
+            <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5">
+              <a href="mailto:godwinshibu01@gmail.com" className="border-t border-line-soft pt-2.5 font-mono text-[13px] hover:text-amber dark:border-white/15">
+                godwinshibu01@gmail.com
               </a>
-              <a href="https://www.linkedin.com/in/godwinshibu/" target="_blank" rel="noreferrer" className="rounded-full border border-white/60 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5">
-                Connect on LinkedIn
+              <a href="tel:+917009485645" className="border-t border-line-soft pt-2.5 font-mono text-[13px] hover:text-amber dark:border-white/15">
+                +91 70094 85645
               </a>
+              <a href="https://www.linkedin.com/in/godwinshibu/" target="_blank" rel="noreferrer" className="border-t border-line-soft pt-2.5 font-mono text-[13px] hover:text-amber dark:border-white/15">
+                linkedin.com/in/godwinshibu
+              </a>
+              <a href="https://github.com/godwin8030" target="_blank" rel="noreferrer" className="border-t border-line-soft pt-2.5 font-mono text-[13px] hover:text-amber dark:border-white/15">
+                github.com/godwin8030
+              </a>
+              <div className="border-t border-line-soft pt-2.5 font-mono text-[13px] dark:border-white/15">
+                Noida, Uttar Pradesh, India
+              </div>
+            </div>
+            <div className="mt-12 flex flex-wrap justify-between gap-2.5 font-mono text-[11px] text-ink-soft dark:text-line">
+              <span>© 2026 Godwin Shibu Varghese</span>
+              <span>Built &amp; maintained with intent</span>
             </div>
           </div>
-        </section>
+        </footer>
       </main>
     </div>
   )
