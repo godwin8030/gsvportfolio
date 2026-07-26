@@ -135,7 +135,7 @@ const EDUCATION = [
   {
     when: 'Aug 2019 — Jul 2023',
     title: 'B.Tech, Computer Science & Engineering',
-    place: 'Saintgits College of Engineering — APJ Abdul Kalam Technological University, Kottayam',
+    place: 'Saintgits College of Engineering — APJ Abdul Kalam Technological University',
   },
 ]
 
