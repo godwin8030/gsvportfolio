@@ -135,7 +135,7 @@ const EDUCATION = [
   {
     when: 'Aug 2019 — Jul 2023',
     title: 'B.Tech, Computer Science & Engineering',
-    place: 'Saintgits College of Engineering — APJ Abdul Kalam Technological University, Kottayam',
+    place: 'Saintgits College of Engineering — APJ Abdul Kalam Technological University',
   },
 ]
 
@@ -266,7 +266,7 @@ export default function Home() {
               <div className="mb-5 flex items-center gap-2.5">
                 <span className="inline-block h-px w-10 bg-amber" />
                 <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft dark:text-line">
-                  Noida, Uttar Pradesh, India
+                  Noida, India
                 </span>
               </div>
 
@@ -283,7 +283,7 @@ export default function Home() {
               </div>
 
               <p className="mt-6 max-w-xl text-[16px] leading-7 text-ink-soft dark:text-line">
-                I sit between engineering, data, and government-scale clients to turn conversational-AI chaos into
+                I sit between engineering, data, and enterprise/government-scale clients to turn conversational-AI chaos into
                 measurable outcomes — chatbots that respond faster, dashboards that surface the right number, and
                 delivery plans that ship on time.
               </p>
@@ -442,11 +442,11 @@ export default function Home() {
               Get in touch
             </span>
             <h2 className="mt-3.5 font-serif text-[clamp(24px,3.2vw,32px)] font-bold">
-              Let&apos;s talk about your next chatbot, dashboard, or delivery plan.
+              Let&apos;s talk about your next chatbot.
             </h2>
             <p className="mb-7 mt-4 max-w-lg text-[15px] leading-7 text-ink-soft dark:text-line">
               Based in Noida, working with teams across CX, CPaaS, and enterprise data — open to
-              Business Analyst and Solutions &amp; Delivery conversations.
+              Solutions &amp; Delivery conversations.
             </p>
             <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5">
               <a href="mailto:godwinshibu01@gmail.com" className="border-t border-line-soft pt-2.5 font-mono text-[13px] hover:text-amber dark:border-white/15">
@@ -462,7 +462,7 @@ export default function Home() {
                 github.com/godwin8030
               </a>
               <div className="border-t border-line-soft pt-2.5 font-mono text-[13px] dark:border-white/15">
-                Noida, Uttar Pradesh, India
+                Noida, India
               </div>
             </div>
             <div className="mt-12 flex flex-wrap justify-between gap-2.5 font-mono text-[11px] text-ink-soft dark:text-line">
