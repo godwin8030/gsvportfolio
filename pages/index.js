@@ -136,7 +136,6 @@ const EDUCATION = [
     title: 'B.Tech, Computer Science & Engineering',
     place: 'Saintgits College of Engineering — APJ Abdul Kalam Technological University, Kottayam',
   },
-  { when: '— May 2019', title: '12th Senior Secondary', place: 'Government Model Senior Secondary School 37B, Chandigarh' },
 ]
 
 /* ---------------------------------------------------------------- */
@@ -171,21 +170,6 @@ function Reveal({ children, className = '' }) {
     return () => io.disconnect()
   }, [])
   return <div ref={ref} className={`reveal ${className}`}>{children}</div>
-}
-
-function FlowBox({ title, sub, tone, compact }) {
-  const toneClass =
-    tone === 'amber' ? 'border-amber' : tone === 'teal' ? 'border-teal' : 'border-ink dark:border-white/25'
-  return (
-    <div className={`w-full border bg-paperwhite text-center dark:bg-darkbg-2 ${toneClass} ${compact ? 'px-2 py-2.5' : 'px-4 py-3'}`}>
-      <div className={`font-mono uppercase tracking-wide text-ink dark:text-paper ${compact ? 'text-[10px]' : 'text-[11px]'}`}>{title}</div>
-      <div className={`mt-0.5 font-mono text-ink-soft dark:text-line ${compact ? 'text-[9.5px]' : 'text-[10.5px]'}`}>{sub}</div>
-    </div>
-  )
-}
-
-function FlowArrow() {
-  return <div className="py-1 font-mono text-sm leading-none text-ink-soft dark:text-line">↓</div>
 }
 
 function Tag({ children }) {
@@ -267,7 +251,7 @@ export default function Home() {
         </header>
 
         {/* Hero */}
-        <section id="home" className="mx-auto max-w-6xl px-6 pt-20 sm:px-8 lg:px-10">
+        <section id="home" className="mx-auto max-w-6xl px-6 pb-4 pt-20 sm:px-8 lg:px-10">
           <div className="grid items-start gap-12 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
               <div className="mb-5 flex items-center gap-2.5">
@@ -318,78 +302,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Schematic diagram */}
-          <Reveal>
-            <div className="relative mt-12 sm:mt-16 border border-ink bg-paperwhite px-4 pb-5 pt-7 dark:border-white/15 dark:bg-darkbg-2 sm:px-5">
-              <span className="absolute -top-[11px] left-4 bg-paperwhite px-2 font-mono text-[10px] uppercase tracking-[0.1em] text-ink-soft before:mr-1 before:text-amber before:content-['//'] dark:bg-darkbg-2 sm:left-5 sm:text-[11px] sm:tracking-[0.14em]">
-                Fig. 01 — Typical chatbot delivery flow I own
-              </span>
-
-              {/* Mobile: stacked flow, no scrolling */}
-              <div className="mx-auto flex max-w-[280px] flex-col items-center sm:hidden">
-                <FlowBox title="End user" sub="govt / enterprise" />
-                <FlowArrow />
-                <FlowBox title="Chatbot / CPaaS" sub="Gupshup platform" tone="amber" />
-                <FlowArrow />
-                <div className="grid w-full grid-cols-2 gap-2">
-                  <FlowBox compact title="Stakeholders" sub="dev · data · client" />
-                  <FlowBox compact title="Feedback loop" sub="user satisfaction" />
-                </div>
-                <FlowArrow />
-                <FlowBox title="Dashboard" sub="my analysis layer" tone="teal" />
-                <FlowArrow />
-                <FlowBox title="Decision" sub="+$1M identified" />
-              </div>
-
-              {/* Tablet & up: full schematic */}
-              <div className="hidden overflow-x-auto sm:block">
-              <svg viewBox="0 0 920 190" className="block h-auto min-w-[640px] w-full">
-                <defs>
-                  <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                    <path d="M0,0 L6,3 L0,6 Z" className="fill-ink dark:fill-paper" />
-                  </marker>
-                </defs>
-                <g fontFamily="IBM Plex Mono" fontSize="11" className="fill-ink dark:fill-paper">
-                  <rect x="10" y="70" width="130" height="50" fill="none" className="stroke-ink dark:stroke-paper" />
-                  <text x="75" y="90" textAnchor="middle">END USER</text>
-                  <text x="75" y="106" textAnchor="middle" className="fill-ink-soft dark:fill-line">govt / enterprise</text>
-
-                  <rect x="200" y="70" width="150" height="50" fill="none" stroke="#D98A2B" strokeWidth="1.5" />
-                  <text x="275" y="90" textAnchor="middle">CHATBOT / CPaaS</text>
-                  <text x="275" y="106" textAnchor="middle" className="fill-ink-soft dark:fill-line">Gupshup platform</text>
-
-                  <rect x="410" y="10" width="150" height="50" fill="none" className="stroke-ink dark:stroke-paper" />
-                  <text x="485" y="30" textAnchor="middle">STAKEHOLDERS</text>
-                  <text x="485" y="46" textAnchor="middle" className="fill-ink-soft dark:fill-line">dev · data · client</text>
-
-                  <rect x="410" y="130" width="150" height="50" fill="none" className="stroke-ink dark:stroke-paper" />
-                  <text x="485" y="150" textAnchor="middle">FEEDBACK LOOP</text>
-                  <text x="485" y="166" textAnchor="middle" className="fill-ink-soft dark:fill-line">user satisfaction</text>
-
-                  <rect x="620" y="70" width="150" height="50" fill="none" stroke="#3E7C6B" strokeWidth="1.5" />
-                  <text x="695" y="90" textAnchor="middle">DASHBOARD</text>
-                  <text x="695" y="106" textAnchor="middle" className="fill-ink-soft dark:fill-line">my analysis layer</text>
-
-                  <rect x="800" y="70" width="110" height="50" fill="none" className="stroke-ink dark:stroke-paper" />
-                  <text x="855" y="90" textAnchor="middle">DECISION</text>
-                  <text x="855" y="106" textAnchor="middle" className="fill-ink-soft dark:fill-line">+$1M ID&apos;d</text>
-                </g>
-                <g strokeWidth="1" markerEnd="url(#arrow)" className="stroke-ink dark:stroke-paper">
-                  <line x1="140" y1="95" x2="198" y2="95" />
-                  <line x1="350" y1="85" x2="408" y2="50" />
-                  <line x1="350" y1="105" x2="408" y2="140" />
-                  <line x1="560" y1="95" x2="618" y2="95" />
-                  <line x1="770" y1="95" x2="798" y2="95" />
-                </g>
-              </svg>
-              </div>
-            </div>
-          </Reveal>
         </section>
 
         {/* Metrics tape */}
-        <div className="mt-20 overflow-hidden whitespace-nowrap border-y border-ink bg-ink py-3.5 dark:border-white/15 dark:bg-black/40">
+        <div className="mt-16 overflow-hidden whitespace-nowrap border-y border-ink bg-ink py-3.5 dark:border-white/15 dark:bg-black/40">
           <div className="animate-tape inline-flex">
             {[...METRICS, ...METRICS].map((m, i) => (
               <span key={i} className="inline-flex items-center gap-2.5 px-7 font-mono text-[13px] text-paper after:ml-7 after:text-[9px] after:text-teal after:content-['◆']">
