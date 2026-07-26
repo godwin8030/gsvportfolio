@@ -10,6 +10,7 @@ import {
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs'
 import profile from '../assets/profile.png'
 import avatar from '../assets/profile.svg'
+import ParticleBackground from '../components/ParticleBackground'
 
 /* ---------------------------------------------------------------- */
 /* Content                                                            */
@@ -208,7 +209,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bp-grid min-h-screen bg-paper text-ink transition-colors duration-300 selection:bg-amber selection:text-paperwhite dark:bg-darkbg dark:text-paper">
+      <main className="bp-grid relative min-h-screen text-ink transition-colors duration-300 selection:bg-amber selection:text-paperwhite dark:text-paper">
+        <ParticleBackground dark={darkMode} />
+
+        <div className="relative z-10">
 
         {/* Header */}
         <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-sm dark:border-white/10 dark:bg-darkbg/90">
@@ -462,6 +466,7 @@ export default function Home() {
             </div>
           </div>
         </footer>
+        </div>
       </main>
     </div>
   )
