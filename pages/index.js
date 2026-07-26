@@ -135,7 +135,7 @@ const EDUCATION = [
   {
     when: 'Aug 2019 — Jul 2023',
     title: 'B.Tech, Computer Science & Engineering',
-    place: 'Saintgits College of Engineering — APJ Abdul Kalam Technological University',
+    place: 'Saintgits College of Engineering — APJ Abdul Kalam Technological University, Kottayam',
   },
 ]
 
@@ -211,6 +211,11 @@ export default function Home() {
 
       <main className="bp-grid relative min-h-screen text-ink transition-colors duration-300 selection:bg-amber selection:text-paperwhite dark:text-paper">
         <ParticleBackground dark={darkMode} />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-[5]"
+          style={{ backgroundImage: 'linear-gradient(to bottom, transparent 0, transparent 55vh, var(--page-bg) 95vh)' }}
+        />
 
         <div className="relative z-10">
 
@@ -261,12 +266,12 @@ export default function Home() {
               <div className="mb-5 flex items-center gap-2.5">
                 <span className="inline-block h-px w-10 bg-amber" />
                 <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft dark:text-line">
-                  Noida, India
+                  Noida, Uttar Pradesh, India
                 </span>
               </div>
 
               <h1 className="max-w-2xl font-serif text-[clamp(34px,5.4vw,56px)] font-bold leading-[1.08] tracking-tight">
-                I map how enterprises talk to <em className="italic text-teal">millions</em> of customers, one conversation at a time.
+                I map how enterprises talk to <em className="text-gradient-sweep not-italic font-bold">millions</em> of customers, one conversation at a time.
               </h1>
 
               <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-sm text-ink-soft dark:text-line">
@@ -278,16 +283,16 @@ export default function Home() {
               </div>
 
               <p className="mt-6 max-w-xl text-[16px] leading-7 text-ink-soft dark:text-line">
-                I sit between engineering, data, and enterprise/government-scale clients to turn conversational-AI chaos into
+                I sit between engineering, data, and government-scale clients to turn conversational-AI chaos into
                 measurable outcomes — chatbots that respond faster, dashboards that surface the right number, and
                 delivery plans that ship on time.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#work" className="font-mono text-[13px] tracking-wide border border-ink bg-ink px-5 py-3 text-paper transition-colors hover:bg-amber hover:border-amber dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber">
+                <a href="#work" className="font-mono text-[13px] tracking-wide border border-ink bg-ink px-5 py-3 text-paper transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber hover:border-amber hover:shadow-[0_10px_30px_-8px_rgba(217,138,43,0.55)] dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber">
                   View experience ↓
                 </a>
-                <a href="mailto:godwinshibu01@gmail.com" className="font-mono text-[13px] tracking-wide border border-ink px-5 py-3 transition-colors hover:bg-ink hover:text-paper dark:border-paper dark:hover:bg-paper dark:hover:text-ink">
+                <a href="mailto:godwinshibu01@gmail.com" className="font-mono text-[13px] tracking-wide border border-ink px-5 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink hover:text-paper hover:shadow-[0_10px_30px_-8px_rgba(27,36,48,0.4)] dark:border-paper dark:hover:bg-paper dark:hover:text-ink">
                   Email me →
                 </a>
               </div>
@@ -313,7 +318,7 @@ export default function Home() {
           <div className="animate-tape inline-flex">
             {[...METRICS, ...METRICS].map((m, i) => (
               <span key={i} className="inline-flex items-center gap-2.5 px-7 font-mono text-[13px] text-paper after:ml-7 after:text-[9px] after:text-teal after:content-['◆']">
-                <b className="font-semibold text-amber">{m.value}</b> {m.label}
+                <b className="stat-glow font-semibold text-amber" style={{ animationDelay: `${(i % METRICS.length) * 0.2}s` }}>{m.value}</b> {m.label}
               </span>
             ))}
           </div>
@@ -362,7 +367,7 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {PROJECTS.map((p, i) => (
                 <Reveal key={i}>
-                  <div className="flex h-full flex-col border border-ink bg-paperwhite p-6 dark:border-white/15 dark:bg-darkbg-2">
+                  <div className="flex h-full flex-col border border-ink bg-paperwhite p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-amber hover:shadow-[0_16px_40px_-16px_rgba(217,138,43,0.4)] dark:border-white/15 dark:bg-darkbg-2 dark:hover:shadow-[0_16px_40px_-16px_rgba(217,138,43,0.25)]">
                     <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-teal">{p.client}</span>
                     <h3 className="mt-2 text-[18px] font-semibold leading-snug">{p.org}</h3>
                     <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft dark:text-line">
@@ -394,10 +399,10 @@ export default function Home() {
                       {cell.items.map((item, j) => (
                         <span
                           key={j}
-                          className={`border px-2.5 py-1.5 font-mono text-xs ${
+                          className={`border px-2.5 py-1.5 font-mono text-xs transition-all duration-200 hover:-translate-y-0.5 ${
                             item.filled
-                              ? 'border-ink bg-ink text-paper dark:border-paper dark:bg-paper dark:text-ink'
-                              : 'border-ink-soft text-ink dark:border-line dark:text-paper'
+                              ? 'border-ink bg-ink text-paper hover:border-amber hover:bg-amber hover:text-paperwhite dark:border-paper dark:bg-paper dark:text-ink dark:hover:border-amber dark:hover:bg-amber dark:hover:text-paperwhite'
+                              : 'border-ink-soft text-ink hover:border-amber hover:text-amber dark:border-line dark:text-paper'
                           }`}
                         >
                           {item.label}
@@ -419,7 +424,7 @@ export default function Home() {
             <Reveal>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-6">
                 {EDUCATION.map((edu, i) => (
-                  <div key={i} className="border border-ink bg-paperwhite p-5 dark:border-white/15 dark:bg-darkbg-2">
+                  <div key={i} className="border border-ink bg-paperwhite p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-amber hover:shadow-[0_16px_40px_-16px_rgba(217,138,43,0.4)] dark:border-white/15 dark:bg-darkbg-2 dark:hover:shadow-[0_16px_40px_-16px_rgba(217,138,43,0.25)]">
                     <div className="font-mono text-xs text-teal">{edu.when}</div>
                     <h4 className="mt-2 text-base font-semibold">{edu.title}</h4>
                     <p className="mt-1 text-[13.5px] text-ink-soft dark:text-line">{edu.place}</p>
@@ -457,7 +462,7 @@ export default function Home() {
                 github.com/godwin8030
               </a>
               <div className="border-t border-line-soft pt-2.5 font-mono text-[13px] dark:border-white/15">
-                Noida, India
+                Noida, Uttar Pradesh, India
               </div>
             </div>
             <div className="mt-12 flex flex-wrap justify-between gap-2.5 font-mono text-[11px] text-ink-soft dark:text-line">

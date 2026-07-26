@@ -14,6 +14,13 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --page-bg: #E4E7EC;
+}
+html.dark {
+  --page-bg: #12151B;
+}
+
 body {
   min-height: 100vh;
   background-color: #E4E7EC;
@@ -80,6 +87,30 @@ html.dark .bp-grid {
 .animate-tape {
   animation: tape 36s linear infinite;
 }
+
+@keyframes gradient-sweep {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.text-gradient-sweep {
+  background: linear-gradient(90deg, #D98A2B, #3E7C6B, #D98A2B);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-sweep 5s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { text-shadow: 0 0 0 rgba(217, 138, 43, 0); }
+  50% { text-shadow: 0 0 10px rgba(217, 138, 43, 0.7); }
+}
+.stat-glow {
+  animation: pulse-glow 2.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-tape { animation: none; }
+  .text-gradient-sweep { animation: none; }
+  .stat-glow { animation: none; }
 }
