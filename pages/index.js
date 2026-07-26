@@ -173,6 +173,21 @@ function Reveal({ children, className = '' }) {
   return <div ref={ref} className={`reveal ${className}`}>{children}</div>
 }
 
+function FlowBox({ title, sub, tone, compact }) {
+  const toneClass =
+    tone === 'amber' ? 'border-amber' : tone === 'teal' ? 'border-teal' : 'border-ink dark:border-white/25'
+  return (
+    <div className={`w-full border bg-paperwhite text-center dark:bg-darkbg-2 ${toneClass} ${compact ? 'px-2 py-2.5' : 'px-4 py-3'}`}>
+      <div className={`font-mono uppercase tracking-wide text-ink dark:text-paper ${compact ? 'text-[10px]' : 'text-[11px]'}`}>{title}</div>
+      <div className={`mt-0.5 font-mono text-ink-soft dark:text-line ${compact ? 'text-[9.5px]' : 'text-[10.5px]'}`}>{sub}</div>
+    </div>
+  )
+}
+
+function FlowArrow() {
+  return <div className="py-1 font-mono text-sm leading-none text-ink-soft dark:text-line">↓</div>
+}
+
 function Tag({ children }) {
   return (
     <div className="mb-2.5 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft before:mr-1 before:text-amber before:content-['//']">
@@ -213,10 +228,10 @@ export default function Home() {
 
         {/* Header */}
         <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-sm dark:border-white/10 dark:bg-darkbg/90">
-          <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8 lg:px-10">
-            <a href="#home" className="flex items-center gap-2.5 font-mono text-sm font-semibold">
-              <Image src={avatar} alt="Godwin avatar" width={28} height={28} className="rounded-full" />
-              GSV / PORTFOLIO
+          <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-8 sm:py-4 lg:px-10">
+            <a href="#home" className="flex items-center gap-2 font-mono text-sm font-semibold sm:gap-2.5">
+              <Image src={avatar} alt="Godwin avatar" width={26} height={26} className="rounded-full sm:h-7 sm:w-7" />
+              <span>GSV<span className="hidden sm:inline"> / PORTFOLIO</span></span>
             </a>
 
             <div className="hidden gap-7 sm:flex">
@@ -231,10 +246,10 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="rounded-full border border-line p-2.5 transition hover:-translate-y-0.5 hover:border-amber dark:border-white/20"
+                className="rounded-full border border-line p-2 transition hover:-translate-y-0.5 hover:border-amber dark:border-white/20 sm:p-2.5"
                 aria-label="Toggle dark mode"
               >
                 {darkMode ? <BsFillSunFill className="text-amber" /> : <BsFillMoonStarsFill className="text-ink-soft" />}
@@ -243,7 +258,7 @@ export default function Home() {
                 href="https://drive.google.com/file/d/1mxqlTUlFFb98n54UmSZfzw2-XdpDFoxv/view?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
-                className="font-mono text-[13px] tracking-wide border border-ink bg-ink px-4 py-2.5 text-paper transition-colors hover:bg-amber hover:border-amber dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber"
+                className="font-mono text-xs tracking-wide border border-ink bg-ink px-3 py-2 text-paper transition-colors hover:bg-amber hover:border-amber dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber sm:px-4 sm:py-2.5 sm:text-[13px]"
               >
                 Resume
               </a>
@@ -306,10 +321,29 @@ export default function Home() {
 
           {/* Schematic diagram */}
           <Reveal>
-            <div className="relative mt-16 overflow-x-auto border border-ink bg-paperwhite px-5 pb-5 pt-7 dark:border-white/15 dark:bg-darkbg-2">
-              <span className="absolute -top-[11px] left-5 bg-paperwhite px-2 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft before:mr-1 before:text-amber before:content-['//'] dark:bg-darkbg-2">
+            <div className="relative mt-12 sm:mt-16 border border-ink bg-paperwhite px-4 pb-5 pt-7 dark:border-white/15 dark:bg-darkbg-2 sm:px-5">
+              <span className="absolute -top-[11px] left-4 bg-paperwhite px-2 font-mono text-[10px] uppercase tracking-[0.1em] text-ink-soft before:mr-1 before:text-amber before:content-['//'] dark:bg-darkbg-2 sm:left-5 sm:text-[11px] sm:tracking-[0.14em]">
                 Fig. 01 — Typical chatbot delivery flow I own
               </span>
+
+              {/* Mobile: stacked flow, no scrolling */}
+              <div className="mx-auto flex max-w-[280px] flex-col items-center sm:hidden">
+                <FlowBox title="End user" sub="govt / enterprise" />
+                <FlowArrow />
+                <FlowBox title="Chatbot / CPaaS" sub="Gupshup platform" tone="amber" />
+                <FlowArrow />
+                <div className="grid w-full grid-cols-2 gap-2">
+                  <FlowBox compact title="Stakeholders" sub="dev · data · client" />
+                  <FlowBox compact title="Feedback loop" sub="user satisfaction" />
+                </div>
+                <FlowArrow />
+                <FlowBox title="Dashboard" sub="my analysis layer" tone="teal" />
+                <FlowArrow />
+                <FlowBox title="Decision" sub="+$1M identified" />
+              </div>
+
+              {/* Tablet & up: full schematic */}
+              <div className="hidden overflow-x-auto sm:block">
               <svg viewBox="0 0 920 190" className="block h-auto min-w-[640px] w-full">
                 <defs>
                   <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
@@ -349,6 +383,7 @@ export default function Home() {
                   <line x1="770" y1="95" x2="798" y2="95" />
                 </g>
               </svg>
+              </div>
             </div>
           </Reveal>
         </section>
@@ -374,14 +409,15 @@ export default function Home() {
             </div>
             {ROLES.map((role, i) => (
               <Reveal key={i}>
-                <div className="grid grid-cols-[140px_1px_1fr] gap-x-6 sm:grid-cols-[160px_1px_1fr] sm:gap-x-7">
-                  <div className="pt-1 font-mono text-[12px] text-ink-soft dark:text-line sm:text-[12.5px]">
-                    {role.when}<br />{role.place}
+                <div className={`sm:grid sm:grid-cols-[160px_1px_1fr] sm:gap-x-7 ${i > 0 ? 'mt-8 border-t border-line-soft pt-8 dark:border-white/10 sm:mt-0 sm:border-t-0 sm:pt-0' : ''}`}>
+                  <div className="flex items-center gap-2 font-mono text-[11.5px] text-ink-soft dark:text-line sm:block sm:pt-1 sm:text-[12.5px]">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber sm:hidden" />
+                    <span>{role.when} · {role.place}</span>
                   </div>
-                  <div className="relative bg-line dark:bg-white/15">
+                  <div className="relative hidden sm:block bg-line dark:bg-white/15">
                     <div className="absolute -left-[3.5px] top-1.5 h-2 w-2 rounded-full border-2 border-amber bg-paper dark:bg-darkbg" />
                   </div>
-                  <div className="pb-12">
+                  <div className="pb-0 pt-3 sm:pb-12 sm:pt-0">
                     <h3 className="text-[18px] font-semibold sm:text-[19px]">{role.title}</h3>
                     <span className="mt-0.5 block font-mono text-[12.5px] text-teal">{role.company}</span>
                     <ul className="mt-3.5 space-y-2.5">
