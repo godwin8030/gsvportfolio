@@ -261,7 +261,7 @@ export default function Home() {
               <div className="mb-5 flex items-center gap-2.5">
                 <span className="inline-block h-px w-10 bg-amber" />
                 <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft dark:text-line">
-                  Noida, Uttar Pradesh, India
+                  Noida, India
                 </span>
               </div>
 
@@ -278,7 +278,7 @@ export default function Home() {
               </div>
 
               <p className="mt-6 max-w-xl text-[16px] leading-7 text-ink-soft dark:text-line">
-                I sit between engineering, data, and government-scale clients to turn conversational-AI chaos into
+                I sit between engineering, data, and enterprise/government-scale clients to turn conversational-AI chaos into
                 measurable outcomes — chatbots that respond faster, dashboards that surface the right number, and
                 delivery plans that ship on time.
               </p>
@@ -457,7 +457,7 @@ export default function Home() {
                 github.com/godwin8030
               </a>
               <div className="border-t border-line-soft pt-2.5 font-mono text-[13px] dark:border-white/15">
-                Noida, Uttar Pradesh, India
+                Noida, India
               </div>
             </div>
             <div className="mt-12 flex flex-wrap justify-between gap-2.5 font-mono text-[11px] text-ink-soft dark:text-line">
