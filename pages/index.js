@@ -143,17 +143,28 @@ const EDUCATION = [
 /* Small helpers                                                      */
 /* ---------------------------------------------------------------- */
 
+function splitLeadingNumber(text) {
+  const m = text.match(/^([+\-−]?\$?\d[\d,]*(?:\.\d+)?(?:%|\+|K|M|Cr)?)/)
+  if (!m) return [null, text]
+  return [m[1], text.slice(m[1].length)]
+}
+
 function Bold({ text }) {
   const parts = text.split(/\*\*(.*?)\*\*/g)
   return (
     <>
-      {parts.map((part, i) =>
-        i % 2 === 1 ? (
-          <b key={i} className="font-semibold text-ink dark:text-paper">{part}</b>
-        ) : (
-          <span key={i}>{part}</span>
+      {parts.map((part, i) => {
+        if (i % 2 === 0) return <span key={i}>{part}</span>
+        const [lead, rest] = splitLeadingNumber(part)
+        if (!lead) {
+          return <b key={i} className="font-semibold text-ink dark:text-paper">{part}</b>
+        }
+        return (
+          <b key={i} className="font-bold text-ink dark:text-paper">
+            <span className="text-amber">{lead}</span>{rest}
+          </b>
         )
-      )}
+      })}
     </>
   )
 }
@@ -314,11 +325,11 @@ export default function Home() {
         </section>
 
         {/* Metrics tape */}
-        <div className="mt-16 overflow-hidden whitespace-nowrap border-y border-ink bg-ink py-3.5 dark:border-white/15 dark:bg-black/40">
+        <div className="mt-16 overflow-hidden whitespace-nowrap border-y border-ink bg-ink py-4 dark:border-white/15 dark:bg-black/40">
           <div className="animate-tape inline-flex">
             {[...METRICS, ...METRICS].map((m, i) => (
               <span key={i} className="inline-flex items-center gap-2.5 px-7 font-mono text-[13px] text-paper after:ml-7 after:text-[9px] after:text-teal after:content-['◆']">
-                <b className="stat-glow font-semibold text-amber" style={{ animationDelay: `${(i % METRICS.length) * 0.2}s` }}>{m.value}</b> {m.label}
+                <b className="stat-glow text-[16px] font-bold text-amber sm:text-[17px]" style={{ animationDelay: `${(i % METRICS.length) * 0.2}s` }}>{m.value}</b> {m.label}
               </span>
             ))}
           </div>
@@ -374,9 +385,21 @@ export default function Home() {
                       <Bold text={p.summary} />
                     </p>
                     <div className="mt-5 flex flex-wrap gap-2 border-t border-line-soft pt-4 dark:border-white/10">
-                      {p.stats.map((s, j) => (
-                        <span key={j} className="border border-ink-soft px-2.5 py-1.5 font-mono text-[11px] dark:border-line">{s}</span>
-                      ))}
+                      {p.stats.map((s, j) => {
+                        const [lead, rest] = splitLeadingNumber(s)
+                        return (
+                          <span key={j} className="border border-ink-soft px-2.5 py-1.5 font-mono text-[11px] dark:border-line">
+                            {lead ? (
+                              <>
+                                <span className="font-bold text-amber">{lead}</span>
+                                {rest}
+                              </>
+                            ) : (
+                              s
+                            )}
+                          </span>
+                        )
+                      })}
                     </div>
                   </div>
                 </Reveal>
