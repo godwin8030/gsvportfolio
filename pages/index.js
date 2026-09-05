@@ -69,13 +69,6 @@ const ROLES = [
 
 const PROJECTS = [
   {
-    org: 'AI-Assisted Ordering Journey',
-    client: 'Zeapl.ai',
-    summary:
-      'Designing the solution architecture to convert a traditional WhatsApp ordering journey into a **hybrid AI-assisted** experience — AI handles natural-language product search, ambiguity resolution, and cart-building, while pricing, inventory, and order processing stay on the existing deterministic system end-to-end.',
-    stats: ['Hybrid AI architecture', 'Deterministic order flow preserved', 'Natural-language product search'],
-  },
-  {
     org: 'Tamil Nadu e-Governance Agency',
     client: 'Gupshup',
     summary:
@@ -249,7 +242,7 @@ export default function Home() {
             </a>
 
             <div className="hidden gap-7 sm:flex">
-              {['Experience', 'Projects', 'Skills', 'Education', 'Contact'].map((label) => (
+              {['Experience', 'Projects', 'Skills', 'Education'].map((label) => (
                 <a
                   key={label}
                   href={`#${label === 'Experience' ? 'work' : label.toLowerCase()}`}
@@ -269,7 +262,7 @@ export default function Home() {
                 {darkMode ? <BsFillSunFill className="text-amber" /> : <BsFillMoonStarsFill className="text-ink-soft" />}
               </button>
               <a
-                href="https://drive.google.com/file/d/1mxqlTUlFFb98n54UmSZfzw2-XdpDFoxv/view?usp=sharing"
+                href="https://rxresu.me/godwinshibu01/resume"
                 target="_blank"
                 rel="noreferrer"
                 className="font-mono text-xs tracking-wide border border-ink bg-ink px-3 py-2 text-paper transition-colors hover:bg-amber hover:border-amber dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber sm:px-4 sm:py-2.5 sm:text-[13px]"
@@ -467,43 +460,6 @@ export default function Home() {
             </Reveal>
           </section>
         </div>
-
-        {/* Contact / footer */}
-        <footer id="contact" className="border-t border-ink pb-10 pt-14 dark:border-white/15">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-10">
-            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft before:mr-1 before:text-amber before:content-['//'] dark:text-line">
-              Get in touch
-            </span>
-            <h2 className="mt-3.5 font-serif text-[clamp(24px,3.2vw,32px)] font-bold">
-              Let&apos;s talk about your next chatbot.
-            </h2>
-            <p className="mb-7 mt-4 max-w-lg text-[15px] leading-7 text-ink-soft dark:text-line">
-              Based in Noida, working with teams across CX, CPaaS, and enterprise data — open to
-              Solutions &amp; Delivery conversations.
-            </p>
-            <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5">
-              <a href="mailto:godwinshibu01@gmail.com" className="border-t border-line-soft pt-2.5 font-mono text-[13px] hover:text-amber dark:border-white/15">
-                godwinshibu01@gmail.com
-              </a>
-              <a href="tel:+917009485645" className="border-t border-line-soft pt-2.5 font-mono text-[13px] hover:text-amber dark:border-white/15">
-                +91 70094 85645
-              </a>
-              <a href="https://www.linkedin.com/in/godwinshibu/" target="_blank" rel="noreferrer" className="border-t border-line-soft pt-2.5 font-mono text-[13px] hover:text-amber dark:border-white/15">
-                linkedin.com/in/godwinshibu
-              </a>
-              <a href="https://github.com/godwin8030" target="_blank" rel="noreferrer" className="border-t border-line-soft pt-2.5 font-mono text-[13px] hover:text-amber dark:border-white/15">
-                github.com/godwin8030
-              </a>
-              <div className="border-t border-line-soft pt-2.5 font-mono text-[13px] dark:border-white/15">
-                Noida, India
-              </div>
-            </div>
-            <div className="mt-12 flex flex-wrap justify-between gap-2.5 font-mono text-[11px] text-ink-soft dark:text-line">
-              <span>© 2026 Godwin Shibu Varghese</span>
-              <span>Built &amp; maintained with intent</span>
-            </div>
-          </div>
-        </footer>
         </div>
       </main>
     </div>
