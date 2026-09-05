@@ -36,7 +36,10 @@ const ROLES = [
     title: 'Business Analyst',
     company: 'zeapl.ai',
     bullets: [
-      'Driving solutions & delivery for CX and CPaaS engagements, translating client requirements into shippable product plans.',
+      'Spearheaded end-to-end delivery of **50+ WhatsApp engagement projects** across **20+ enterprise clients** — including Exxon, Aditya Birla, DishTV, Hindalco, Tata Play Fiber, Vivo, and Lava — supporting **1M+ monthly users** and **5M+ messages**.',
+      'Owned requirements, solution design, and implementation across complex customer journeys, translating business processes into scalable workflows, APIs, integrations, and automation.',
+      'Orchestrated cross-functional teams across clients, developers, CSS, and QA, ensuring timely delivery and alignment between business requirements and technical execution.',
+      'Designed API-led integrations with SAP S/4HANA, SFTP, payment gateways, webhooks, and scheduled jobs — enabling automated payment, service, survey, ranking, and document workflows — and contributed to a **$3M+ business portfolio** through scalable automation and troubleshooting across high-volume integrations.',
     ],
   },
   {
@@ -65,6 +68,13 @@ const ROLES = [
 ]
 
 const PROJECTS = [
+  {
+    org: 'AI-Assisted Ordering Journey',
+    client: 'Zeapl.ai',
+    summary:
+      'Designing the solution architecture to convert a traditional WhatsApp ordering journey into a **hybrid AI-assisted** experience — AI handles natural-language product search, ambiguity resolution, and cart-building, while pricing, inventory, and order processing stay on the existing deterministic system end-to-end.',
+    stats: ['Hybrid AI architecture', 'Deterministic order flow preserved', 'Natural-language product search'],
+  },
   {
     org: 'Tamil Nadu e-Governance Agency',
     client: 'Gupshup',
