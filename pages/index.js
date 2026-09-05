@@ -8,7 +8,7 @@ import {
   AiFillTwitterCircle
 } from 'react-icons/ai'
 import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs'
-import profile from '../assets/profile.png'
+import profile from '../assets/headshot.png'
 import avatar from '../assets/profile.svg'
 import ParticleBackground from '../components/ParticleBackground'
 
@@ -221,6 +221,7 @@ export default function Home() {
         <meta name="description" content="Business Analyst specializing in conversational AI, CX, and CPaaS delivery for enterprise and government clients." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
 
       <main className="bp-grid relative min-h-screen text-ink transition-colors duration-300 selection:bg-amber selection:text-paperwhite dark:text-paper">
