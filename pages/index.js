@@ -200,12 +200,11 @@ function Tag({ children }) {
 /* ---------------------------------------------------------------- */
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem('theme')
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) setDarkMode(true)
+    setDarkMode(savedTheme !== 'light')
   }, [])
 
   useEffect(() => {
