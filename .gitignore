@@ -1,21 +1,11 @@
 ```
+# Next.js build outputs
+.next/
+
 # Dependencies
 node_modules/
 
-# Build outputs
-dist/
-build/
-target/
-
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
+# Environment variables
 .env
 .env.local
 .env.*
@@ -39,16 +29,27 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# Testing
-.nyc_output/
-coverage/
-
-# Distribution / packaging
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 .Python
 *.so
-.libs/
-*.tar.gz
 *.egg-info/
+.eggs/
+
+# Build outputs
+dist/
+build/
+target/
+*.out
+*.exe
+*.dll
+*.so
+*.a
+*.o
+*.obj
 
 # Compression
 *.zip
@@ -69,4 +70,13 @@ coverage/
 *.Z
 *.lz
 *.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# Testing
+.mypy_cache/
+.pytest_cache/
+coverage.xml
 ```
