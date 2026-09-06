@@ -16,7 +16,14 @@ const iconMap = {
 
 export default function Hero({ location }) {
   return (
-    <section id="home" className="mx-auto max-w-6xl px-4 pb-4 pt-16 sm:px-8 lg:px-10">
+    <section id="home" className="mx-auto max-w-6xl px-4 pb-4 pt-8 sm:px-8 sm:pt-12 lg:px-10 lg:pt-16">
+      {/* Profile image - shown at top on mobile with glassmorphic frame, right side on desktop */}
+      <div className="mb-6 mx-auto w-full max-w-[200px] sm:hidden">
+        <div className="relative backdrop-blur-md bg-white/10 border border-white/20 p-2 shadow-xl rounded-lg">
+          <Image src={profile} alt="Godwin Shibu portrait" className="w-full object-cover rounded-md" priority />
+        </div>
+      </div>
+
       <div className="grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
         <div>
           <div className="mb-4 flex items-center gap-2">
@@ -26,7 +33,7 @@ export default function Hero({ location }) {
             </span>
           </div>
 
-          <h1 className="max-w-2xl font-serif text-[clamp(28px,5.4vw,56px)] font-bold leading-[1.08] tracking-tight">
+          <h1 className="max-w-2xl font-serif text-[clamp(24px,5.4vw,56px)] font-bold leading-[1.08] tracking-tight sm:text-[clamp(28px,5.4vw,56px)]">
             I map how enterprises talk to <em className="text-gradient-sweep not-italic font-bold">millions</em> of customers, one conversation at a time.
           </h1>
 
@@ -38,18 +45,18 @@ export default function Hero({ location }) {
             <span className="hidden sm:inline">Solutions &amp; Delivery, CX, CPaaS</span>
           </div>
 
-          <p className="mt-4 max-w-xl text-[15px] leading-7 text-ink-soft dark:text-line sm:text-[16px]">
+          <p className="mt-4 max-w-xl text-[14px] leading-7 text-ink-soft dark:text-line sm:text-[15px] sm:leading-7">
             I sit between engineering, data, and enterprise/government-scale clients to turn conversational-AI chaos into
             measurable outcomes — chatbots that respond faster, dashboards that surface the right number, and
             delivery plans that ship on time.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2 sm:gap-3">
-            <a href="#work" className="font-mono text-[12px] tracking-wide border border-ink bg-ink px-4 py-2.5 text-paper transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber hover:border-amber hover:shadow-[0_10px_30px_-8px_rgba(217,138,43,0.55)] dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber sm:text-[13px]">
+            <a href="#work" className="font-mono text-[11px] tracking-wide border border-ink bg-ink px-4 py-2.5 text-paper transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber hover:border-amber hover:shadow-[0_10px_30px_-8px_rgba(217,138,43,0.55)] dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber sm:text-[12px] lg:text-[13px]">
               View experience ↓
             </a>
-            <a href="mailto:godwinshibu01@gmail.com" className="font-mono text-[12px] tracking-wide border border-ink px-4 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink hover:text-paper hover:shadow-[0_10px_30px_-8px_rgba(27,36,48,0.4)] dark:border-paper dark:hover:bg-paper dark:hover:text-ink sm:text-[13px]">
-              Email me →
+            <a href="/resume.pdf" download className="font-mono text-[11px] tracking-wide border border-ink px-4 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink hover:text-paper hover:shadow-[0_10px_30px_-8px_rgba(27,36,48,0.4)] dark:border-paper dark:hover:bg-paper dark:hover:text-ink sm:text-[12px] lg:text-[13px]">
+              Download Resume →
             </a>
           </div>
 
@@ -72,9 +79,9 @@ export default function Hero({ location }) {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-sm">
-          <div className="border border-ink bg-paperwhite p-2 dark:border-white/15 dark:bg-darkbg-2">
-            <Image src={profile} alt="Godwin Shibu portrait" className="w-full object-cover" priority />
+        <div className="mx-auto hidden w-full max-w-sm sm:block">
+          <div className="relative backdrop-blur-md bg-white/10 border border-white/20 p-2 shadow-xl rounded-lg">
+            <Image src={profile} alt="Godwin Shibu portrait" className="w-full object-cover rounded-md" priority />
           </div>
         </div>
       </div>
