@@ -55,7 +55,7 @@ export default function Hero({ location }) {
             <a href="#work" className="font-mono text-[11px] tracking-wide border border-ink bg-ink px-4 py-2.5 text-paper transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber hover:border-amber hover:shadow-[0_10px_30px_-8px_rgba(217,138,43,0.55)] dark:border-paper dark:bg-paper dark:text-ink dark:hover:bg-amber dark:hover:text-paperwhite dark:hover:border-amber sm:text-[12px] lg:text-[13px]">
               View experience ↓
             </a>
-            <a href="/resume.pdf" download className="font-mono text-[11px] tracking-wide border border-ink px-4 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink hover:text-paper hover:shadow-[0_10px_30px_-8px_rgba(27,36,48,0.4)] dark:border-paper dark:hover:bg-paper dark:hover:text-ink sm:text-[12px] lg:text-[13px]">
+            <a href="https://rxresu.me/godwinshibu01/resume" download className="font-mono text-[11px] tracking-wide border border-ink px-4 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink hover:text-paper hover:shadow-[0_10px_30px_-8px_rgba(27,36,48,0.4)] dark:border-paper dark:hover:bg-paper dark:hover:text-ink sm:text-[12px] lg:text-[13px]">
               Download Resume →
             </a>
           </div>
