@@ -131,8 +131,6 @@ export const EDUCATION = [
 export const SOCIAL_LINKS = [
   { href: 'https://www.linkedin.com/in/godwinshibu/', icon: 'linkedin', label: 'LinkedIn' },
   { href: 'https://github.com/godwin8030', icon: 'github', label: 'GitHub' },
-  { href: 'https://www.instagram.com/ig.gsv/', icon: 'instagram', label: 'Instagram' },
-  { href: 'https://twitter.com/godwin_shibu', icon: 'twitter', label: 'Twitter' },
 ]
 
 export const NAVIGATION_LINKS = ['Experience', 'Projects', 'Skills', 'Education']
