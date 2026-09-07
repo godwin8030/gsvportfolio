@@ -1,1 +1,27 @@
-Nothing needs to be added to .gitignore since the changes only include source files (image files like .png and .ico) which should not be ignored according to the rules.
+```
+# Next.js build output
+.next/
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# IDE
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+```
