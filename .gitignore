@@ -1,6 +1,7 @@
 ```
-# Next.js build output
+# Next.js build outputs
 .next/
+out/
 
 # Dependencies
 node_modules/
@@ -17,11 +18,18 @@ node_modules/
 *.tmp
 *.swp
 
-# IDE
+# Editor directories
 .vscode/
 .idea/
 
-# OS generated files
-.DS_Store
-Thumbs.db
+# Python cache (if applicable)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build outputs (general)
+dist/
+build/
+target/
 ```
